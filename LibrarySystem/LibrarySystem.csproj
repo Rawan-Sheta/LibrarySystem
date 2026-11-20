@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!-- Console app: gives us a simple Main entry point to demo the model. -->
+    <OutputType>Exe</OutputType>
+
+    <!-- .NET 8 is an LTS release. Newer SDKs (9, 10, ...) can build and run net8.0 projects too. -->
+    <TargetFramework>net8.0</TargetFramework>
+
+    <!-- ImplicitUsings: System, System.Linq, System.Collections.Generic ... are imported automatically. -->
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- Nullable reference types: the compiler warns us when something that can be null is used unsafely.
+         This is also how we tell EF Core which properties are required (string) vs optional (string?). -->
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- The EF Core provider for SQL Server (it brings in EF Core itself). -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11" />
+
+    <!-- Design-time tooling needed ONLY for 'dotnet ef migrations ...' commands.
+         PrivateAssets=all keeps it out of anything that references this project. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>

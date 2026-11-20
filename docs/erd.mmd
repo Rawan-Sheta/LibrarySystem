@@ -1,0 +1,27 @@
+erDiagram
+    Authors ||--o{ Books : "writes (1 to many)"
+    Books ||--o{ Loans : "is lent in (1 to many)"
+    Borrowers ||--o{ Loans : "takes out (1 to many)"
+
+    Authors {
+        int Id PK
+        nvarchar150 Name
+        date BirthDate
+    }
+    Books {
+        int Id PK
+        nvarchar250 Title
+        nvarchar20 ISBN "UNIQUE"
+        int AuthorId FK
+    }
+    Borrowers {
+        int Id PK
+        nvarchar150 Name
+        date MembershipDate
+    }
+    Loans {
+        int BookId PK, FK
+        int BorrowerId PK, FK
+        date LoanDate PK
+        date ReturnDate "NULL = still on loan"
+    }
